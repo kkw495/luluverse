@@ -603,3 +603,206 @@ textarea {
   margin-top: 6px;
   line-height: 1.6;
 }
+/* ============================================ 快速记录浮窗（追加到 style.css 末尾） ============================================ */
+.quick-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: var(--sage);
+  color: #243024;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(64, 52, 38, 0.22);
+  z-index: 150;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.quick-fab:hover {
+  transform: scale(1.06);
+  box-shadow: 0 8px 22px rgba(64, 52, 38, 0.28);
+}
+.quick-fab:active {
+  transform: scale(0.94);
+}
+
+.quick-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(40, 35, 28, 0.35);
+  z-index: 200;
+}
+.quick-overlay.show {
+  display: block;
+}
+
+.quick-panel {
+  display: none;
+  position: fixed;
+  right: 20px;
+  bottom: 96px;
+  width: 340px;
+  max-width: calc(100vw - 40px);
+  max-height: 70vh;
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(64, 52, 38, 0.25);
+  z-index: 250;
+  padding: 18px;
+  flex-direction: column;
+  gap: 12px;
+}
+.quick-panel.show {
+  display: flex;
+}
+
+.quick-tabs {
+  display: flex;
+  gap: 4px;
+  background: #f2eee7;
+  padding: 4px;
+  border-radius: 12px;
+}
+.quick-tab {
+  flex: 1;
+  padding: 8px 4px;
+  background: transparent;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--sub);
+  transition: all 0.2s;
+}
+.quick-tab.active {
+  background: white;
+  color: var(--text);
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+#quickInput {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.quick-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.quick-cancel,
+.quick-save {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+.quick-cancel {
+  background: transparent;
+  color: var(--sub);
+  border: 1px solid var(--line);
+}
+.quick-save {
+  background: var(--sage);
+  color: #243024;
+}
+
+.quick-recent {
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+.quick-recent-title {
+  font-size: 12px;
+  color: var(--sub);
+  margin-bottom: 8px;
+}
+.quick-recent-item {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+.quick-recent-icon {
+  flex-shrink: 0;
+  font-size: 14px;
+}
+.quick-recent-text {
+  flex: 1;
+  color: var(--text);
+  word-break: break-word;
+  line-height: 1.5;
+}
+.quick-recent-del {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: var(--sub);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0 4px;
+  line-height: 1;
+}
+.quick-recent-empty {
+  text-align: center;
+  font-size: 12px;
+  color: var(--sub);
+  padding: 14px;
+}
+
+.quick-toast {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(40, 35, 28, 0.85);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  z-index: 300;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.quick-toast.show {
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .quick-fab {
+    right: 16px;
+    bottom: 16px;
+    width: 52px;
+    height: 52px;
+    font-size: 28px;
+  }
+  .quick-panel {
+    right: 12px;
+    left: 12px;
+    bottom: 80px;
+    width: auto;
+    max-width: none;
+  }
+}
