@@ -390,3 +390,23 @@ function showWelcomeGuide() {
     }, 100);
   };
 })();
+
+// 移动端侧边栏切换
+const _sidebar = document.getElementById('sidebar');
+const _mask = document.getElementById('sidebarMask');
+const _toggle = document.getElementById('menuToggle');
+function _toggleSidebar() {
+  _sidebar.classList.toggle('open');
+  _mask.classList.toggle('show');
+}
+_toggle?.addEventListener('click', _toggleSidebar);
+_mask?.addEventListener('click', _toggleSidebar);
+document.querySelectorAll('.nav-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (window.innerWidth <= 980) {
+      _sidebar.classList.remove('open');
+      _mask.classList.remove('show');
+    }
+  });
+});
+
