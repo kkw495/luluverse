@@ -6,6 +6,27 @@
   <title>Luluverse · Personal Operating System</title>
   <link rel="stylesheet" href="style.css">
 </head>
+  <!-- 快速记录浮窗 -->
+  <button class="quick-fab" id="quickFab" aria-label="快速记录">+</button>
+  <div class="quick-overlay" id="quickOverlay"></div>
+  <div class="quick-panel" id="quickPanel">
+    <div class="quick-tabs">
+      <button class="quick-tab active" data-type="question">💡 问题</button>
+      <button class="quick-tab" data-type="idea">✨ 灵感</button>
+      <button class="quick-tab" data-type="todo">✅ 待办</button>
+    </div>
+    <textarea id="quickInput" placeholder="随手记一下..." rows="3"></textarea>
+    <div class="quick-actions">
+      <button class="quick-cancel" id="quickCancel">取消</button>
+      <button class="quick-save" id="quickSave">保存</button>
+    </div>
+    <div class="quick-recent">
+      <div class="quick-recent-title">最近记录</div>
+      <div class="quick-recent-list" id="quickRecentList"></div>
+    </div>
+  </div>
+  <script src="quick-capture.js"></script>
+
 <body>
 <button class="menu-toggle" id="menuToggle" aria-label="菜单">☰</button>
 <div class="sidebar-mask" id="sidebarMask"></div>
