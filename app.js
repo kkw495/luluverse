@@ -276,6 +276,8 @@ function showWelcomeGuide() {
 (function initGlobalSearch() {
   const searchInput = document.getElementById('globalSearch');
   const searchResults = document.getElementById('searchResults');
+if (!searchInput || !searchResults) return;
+
   let searchTimeout;
 
   searchInput.addEventListener('input', (e) => {
