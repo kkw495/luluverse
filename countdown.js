@@ -135,4 +135,49 @@
     modal
       .querySelector(".countdown-edit-list")
       .addEventListener("click", (e) => {
-        con
+        const delId = e.target.dataset.del;
+        if (!delId) return;
+        const cur = collect().filter((it) => String(it.id) !== delId);
+        save(cur);
+        renderEditList();
+      });
+
+    function closeModal() {
+      const items = collect().filter((it) => it.label && it.date);
+      save(items);
+      refresh();
+      modal.remove();
+    }
+
+    modal
+      .querySelector(".countdown-modal-close")
+      .addEventListener("click", closeModal);
+    modal
+      .querySelector(".countdown-save-btn")
+      .addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+
+  function ready(fn) {
+    if (document.readyState !== "loading") fn();
+    else document.addEventListener("DOMContentLoaded", fn);
+  }
+
+  ready(() => {
+    const main = document.getElementById("main");
+    if (!main) return;
+
+    function tryInject() {
+      const activeBtn = document.querySelector(".nav-btn.active");
+      if (activeBtn && activeBtn.dataset.page === "dashboard") {
+        injectBanner(main);
+      }
+    }
+
+    setTimeout(tryInject, 600);
+    const observer = new MutationObserver(() => tryInject());
+    observer.observe(main, { childList: true });
+  });
+})();
