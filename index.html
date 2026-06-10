@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luluverse · Personal Operating System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <!-- 侧边栏 -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <h1>Luluverse</h1>
+        <p>Learn · Think · Create · Live</p>
+      </div>
+      
+      <nav class="nav">
+        <button class="nav-btn active" data-page="dashboard">
+          <span class="icon">🏠</span>
+          <span class="label">Dashboard</span>
+        </button>
+        <button class="nav-btn" data-page="world">
+          <span class="icon">🌍</span>
+          <span class="label">World Map</span>
+        </button>
+        <button class="nav-btn" data-page="classroom">
+          <span class="icon">📖</span>
+          <span class="label">Classroom</span>
+        </button>
+        <button class="nav-btn" data-page="law">
+          <span class="icon">⚖️</span>
+          <span class="label">Law School</span>
+        </button>
+        <button class="nav-btn" data-page="skills">
+          <span class="icon">🗣</span>
+          <span class="label">Skills</span>
+        </button>
+        <button class="nav-btn" data-page="library">
+          <span class="icon">📚</span>
+          <span class="label">Library</span>
+        </button>
+        <button class="nav-btn" data-page="brain">
+          <span class="icon">🧠</span>
+          <span class="label">Second Brain</span>
+        </button>
+        <button class="nav-btn" data-page="projects">
+          <span class="icon">🚀</span>
+          <span class="label">Projects</span>
+        </button>
+        <button class="nav-btn" data-page="output">
+          <span class="icon">📝</span>
+          <span class="label">Output</span>
+        </button>
+        <button class="nav-btn" data-page="life">
+          <span class="icon">❤️</span>
+          <span class="label">Life</span>
+        </button>
+        <button class="nav-btn" data-page="review">
+          <span class="icon">🔄</span>
+          <span class="label">Review</span>
+        </button>
+        <button class="nav-btn" data-page="archive">
+          <span class="icon">📂</span>
+          <span class="label">Archive</span>
+        </button>
+        <button class="nav-btn" data-page="ai">
+          <span class="icon">🤖</span>
+          <span class="label">AI 助手</span>
+        </button>
+        
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sync-status sync-offline" id="syncStatus">☁️ 未配置</div>
+        <button class="settings-btn" onclick="openSettings()">⚙️ 设置</button>
+      </div>
+    </aside>
+
+    <!-- 主内容区 -->
+  
+    <main class="main" id="main">
+      <!-- 页面会动态加载到这里 -->
+    </main>
+  </div>
+
+  <!-- 设置弹窗 -->
+  <div class="modal" id="settingsModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>⚙️ 设置</h2>
+        <button class="close-btn" onclick="closeSettings()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="setting-group">
+          <label>DeepSeek API Key</label>
+          <input type="password" id="apiKey" placeholder="sk-...">
+          <small>仅存储在本地浏览器，用于 AI 功能</small>
+        </div>
+        <div class="setting-group">
+          <label>主题</label>
+          <select id="theme">
+            <option value="light">浅色</option>
+            <option value="dark">深色</option>
+          </select>
+        </div>
+
+        <hr class="setting-divider">
+
+        <h3 class="setting-section-title">☁️ 云端同步</h3>
+        <p class="setting-hint">配置 Supabase 后，可通过工作区代码在多设备间共享数据。</p>
+
+        <div class="setting-group">
+          <label>Supabase 项目 URL</label>
+          <input type="text" id="supabaseUrl" placeholder="https://xxxx.supabase.co">
+        </div>
+        <div class="setting-group">
+          <label>Supabase Anon Key</label>
+          <input type="password" id="supabaseKey" placeholder="eyJhbGci...">
+        </div>
+        <div class="setting-group">
+          <label>工作区代码</label>
+          <input type="text" id="workspaceCode" placeholder="6 位共享代码" maxlength="6" style="text-transform: uppercase;">
+          <small>创建或加入工作区后显示，分享给他人即可同步数据</small>
+        </div>
+        <div class="setting-group setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="autoSync" checked>
+            自动同步（修改后 3 秒上传）
+          </label>
+        </div>
+        <div class="setting-group cloud-actions">
+          <button type="button" class="btn-secondary" onclick="createCloudWorkspace()">创建新工作区</button>
+          <button type="button" class="btn-secondary" onclick="joinCloudWorkspace()">加入工作区</button>
+          <button type="button" class="btn-primary" onclick="manualCloudSync()">立即同步</button>
+        </div>
+
+        <div class="setting-group">
+          <button class="btn-primary" onclick="saveSettings()">保存设置</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
