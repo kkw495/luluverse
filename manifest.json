@@ -1,0 +1,20 @@
+{
+  "name": "Luluverse",
+  "short_name": "Luluverse",
+  "description": "小璐的个人知识空间｜法学考研｜自媒体｜成长记录",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F9F8F5",
+  "theme_color": "#7E9A86",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
