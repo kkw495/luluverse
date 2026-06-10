@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Luluverse · Personal Operating System</title>
   <link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#7E9A86">
+<link rel="apple-touch-icon" href="icon.svg">
+
 </head>
   <!-- 快速记录浮窗 -->
   <button class="quick-fab" id="quickFab" aria-label="快速记录">+</button>
@@ -27,6 +31,11 @@
   </div>
   <script src="quick-capture.js"></script>
   <script src="countdown.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(()=>{}));
+  }
+</script>
 
 
 <body>
